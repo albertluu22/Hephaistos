@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+  <Id>REPLACE-WITH-UNIQUE-GUID</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Local Dev</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Word React Add-in"/>
+  <Description DefaultValue="A React task pane add-in for Word."/>
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+  <DefaultSettings>
+    <!-- Update to whichever URL your dev server hosts the taskpane; by default Vite serves at http://localhost:3000 -->
+    <SourceLocation DefaultValue="https://localhost:3000/"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" Version="1.0">
+    <VersionOverride xsi:type="VersionOverridesV1_0">
+      <Hosts>
+        <Host xsi:type="Document">
+          <DesktopFormFactor>
+            <GetStarted>
+              <Title resid="residGetStartedTitle"/>
+              <Description resid="residGetStartedDescription"/>
+            </GetStarted>
+            <FunctionFile resid="residTaskPaneUrl"/>
+            <Taskpane id="Taskpane.ID">
+              <SourceLocation resid="residTaskpaneUrl"/>
+              <Title resid="residTaskpaneTitle"/>
+            </Taskpane>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="icon-32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="residTaskpaneUrl" DefaultValue="https://localhost:3000/"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="residTaskpaneTitle" DefaultValue="Taskpane"/>
+          <bt:String id="residGetStartedTitle" DefaultValue="Get started"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="residGetStartedDescription" DefaultValue="Open the Taskpane to get started."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverride>
+  </VersionOverrides>
+</OfficeApp>
